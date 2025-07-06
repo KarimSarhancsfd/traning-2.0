@@ -67,9 +67,9 @@ export class ProductsService {
     // }
   
  
-    public getsingleProducts(id: string) {
+    public getsingleProducts(id: number) {
       console.log(typeof id);
-      const product = this.products.find((p) => p.id === parseInt(id));
+      const product = this.products.find((p) => p.id );
       if (!product)
         throw new NotFoundException(`product not found ${id}`, {
           description: 'this is description',
@@ -113,8 +113,19 @@ export class ProductsService {
   
   
 
-    public deleteproduct(id: string) {
-      const product = this.products.find((p) => p.id === parseInt(id));
+    // public deleteproduct(id: string) {
+    //   const product = this.products.find((p) => p.id === parseInt(id));
+    //   if (!product)
+    //     throw new NotFoundException(`product not found ${id}`, {
+    //       description: 'the product does not deleted',
+    //     });
+  
+    //   return { message: 'product was deleted' };
+    // }
+
+
+       public deleteproduct(id: number) {
+      const product = this.products.find((p) => p.id );
       if (!product)
         throw new NotFoundException(`product not found ${id}`, {
           description: 'the product does not deleted',
@@ -122,6 +133,5 @@ export class ProductsService {
   
       return { message: 'product was deleted' };
     }
-
 
  }
