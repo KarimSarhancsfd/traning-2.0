@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 {
   "name": "traine",
   "version": "0.0.1",
@@ -75,6 +76,8 @@
   }
 }
 =======
+=======
+>>>>>>> 6d0a54ba40621d3e1932311e07c46fbffe52c617
 {
   "name": "traine",
   "version": "0.0.1",
@@ -150,4 +153,7 @@
     "testEnvironment": "node"
   }
 }
+<<<<<<< HEAD
 >>>>>>> 71b3568 (intiale packages push)
+=======
+>>>>>>> 6d0a54ba40621d3e1932311e07c46fbffe52c617
