@@ -15,7 +15,7 @@ import {
   ParseIntPipe,
   ValidationPipe,
 } from '@nestjs/common';
-import { Request, Response } from 'express';
+
 
 import { CreateProductDto } from './dtos/create-product.dto';
 import { UpdateProductDto } from './dtos/update-product.dto';
