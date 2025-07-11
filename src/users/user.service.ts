@@ -29,7 +29,7 @@ type User = {
     email:string;
 }
 
-export class userService{
+export class UserService{
      private user:User[] = [
     { id: 1, name: 'Alice', email: 'kariminstructor@gmail.com' },
 { id: 2, name: 'Bob', email: 'bobstudent@gmail.com' },
