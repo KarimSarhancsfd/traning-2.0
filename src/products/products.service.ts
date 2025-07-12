@@ -11,6 +11,22 @@ import { UpdateProductDto } from './dtos/update-product.dto';
 };
 
 
+important note thhere is a two tips of relationships 
+first:
+// class person{}
+//Is-A Realationship
+//Student is  a person
+// class student extends Person{}
+
+
+// class SendEmail{}
+//Has-A Relationship
+//Account has sendEmail
+// class Account {
+//   private sendEmail: SendEmail = new SendEmail();
+// }
+
+
 
 export class ProductsService {
       private products: Products[] = [
