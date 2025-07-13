@@ -27,7 +27,10 @@ export class ProductsController {
   // GET: http://localhost:5000/api/products
   // GET: ~/api/products
  //@ Important NTE: this considered as bad practice, we will fix 
-  private ProductsService: ProductsService = new ProductsService();
+  private ProductsService: ProductsService;
+  contstructor(ProductsService: ProductsService){
+    this.ProductsService = ProductsService;
+  }
 
 
   /**

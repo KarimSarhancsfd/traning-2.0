@@ -11,8 +11,8 @@ import { UpdateProductDto } from './dtos/update-product.dto';
 };
 
 
-important note thhere is a two tips of relationships 
-first:
+// important note thhere is a two tips of relationships 
+// first:
 // class person{}
 //Is-A Realationship
 //Student is  a person
@@ -27,7 +27,7 @@ first:
 // }
 
 
-
+@Injectable() // this is a decorator that makes the class injectable
 export class ProductsService {
       private products: Products[] = [
     { id: 1, title: 'book', price: 10 },
