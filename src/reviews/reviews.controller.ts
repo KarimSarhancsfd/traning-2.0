@@ -20,7 +20,13 @@ import { ReviewsService } from './reviews.service';
 @Controller('api/reviews')
 export class ReviewsController {
 
-    private ReviewsService: ReviewsService = new ReviewsService();
+    // private ReviewsService: ReviewsService = new ReviewsService(); bad pratisce beacause of strong bounding which means in the parent when i change somthing i nedd to change it here to in each place i used it
+    // but in the other hand to avoid this we can use the constructor injection
+    // private ReviewsService: ReviewsService;
+    // contstructor(ReviewsService: ReviewsService){
+    //   this.ReviewsService = ReviewsService;
+    // } the same as bellow but below is the best practice
+  constructor(private readonly ReviewsService: ReviewsService) {}//Beast practise
 
 
   //GET: http://localhost:5000/api/reviews
