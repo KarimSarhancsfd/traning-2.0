@@ -4,7 +4,7 @@ import { CreateUserDto } from './dtos/create-user.dto';
 
 import {UpdateUserDto } from './dtos/update-user.dto'
 
-import {UserService} from './user.service'
+import {UserService } from './user.service'
 
 
 
@@ -13,7 +13,16 @@ export class UsersController {
     // GET: http://localhost:5000/api/users
    // GET: ~/api/users
 
- private userService: UserService = new UserService();
+//  private userService: UserService = new UserService();
+
+  // constructor(private readonly userService: UserService) {}
+
+  private userService: UserService;
+  constructor(userService: UserService) {
+    this.userService = userService;
+  }
+
+
 
    
     @Get()
