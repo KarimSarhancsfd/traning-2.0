@@ -3,6 +3,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dtos/create-product.dto';
 import { UpdateProductDto } from './dtos/update-product.dto';
+import { UserService } from 'src/users/user.service';
 
  type Products = {
   id: number;
@@ -27,8 +28,13 @@ import { UpdateProductDto } from './dtos/update-product.dto';
 // }
 
 
-@Injectable() // this is a decorator that makes the class injectable
+@Injectable() // this is a decorator that makes  the class injectable
+//this called inner dependency injection
 export class ProductsService {
+   
+  constructor(private readonly usersService:UserService) {}
+  //this is outer dependency injection
+
       private products: Products[] = [
     { id: 1, title: 'book', price: 10 },
     { id: 2, title: 'pen', price: 5 },

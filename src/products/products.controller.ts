@@ -16,24 +16,21 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 
-
 import { CreateProductDto } from './dtos/create-product.dto';
 import { UpdateProductDto } from './dtos/update-product.dto';
 import { ProductsService } from './products.service';
-
 
 @Controller('api/products')
 export class ProductsController {
   // GET: http://localhost:5000/api/products
   // GET: ~/api/products
- //@ Important Note: this considered as bad practice, we will fix 
+  //@ Important Note: this considered as bad practice, we will fix
   // private ProductsService: ProductsService;
   // contstructor(ProductsService: ProductsService){
   //   this.ProductsService = ProductsService;
   // }
 
   constructor(private readonly ProductsService: ProductsService) {}
-
 
   /**
    *  Create new product
@@ -53,7 +50,6 @@ export class ProductsController {
     //    return body;
 
     return this.ProductsService.createProduct(body);
-
   }
 
   /**
@@ -61,7 +57,6 @@ export class ProductsController {
    */
   @Get()
   public getAllProducts() {
-    
     return this.ProductsService.getAllProducts();
   }
 
@@ -71,7 +66,6 @@ export class ProductsController {
   @Get('/:id')
   public getsingleProducts(@Param('id', ParseIntPipe) id: number) {
     return this.ProductsService.getsingleProducts(id);
-
   }
 
   /**
@@ -82,7 +76,6 @@ export class ProductsController {
     @Param('id', ParseIntPipe) id: number,
     @Body(new ValidationPipe()) body: UpdateProductDto,
   ) {
- 
     // - this.products[index]: gets the original object at that index (e.g. { id: 2, name: 'pen', rating: 4 })
     // - ...this.products[index]: spreads its existing properties into a new object
     // - ...body: then spreads the new update values (e.g. { rating: 9 })
@@ -93,8 +86,8 @@ export class ProductsController {
     // - For arrays: It spreads elements out into a new array or function call.
     // - For objects: It spreads key-value pairs into a new object.
 
-     // Return the updated review
-     return this.ProductsService.updateProduct(id,body);
+    // Return the updated review
+    return this.ProductsService.updateProduct(id, body);
   }
 
   /**
@@ -102,7 +95,6 @@ export class ProductsController {
    */
   @Delete(':id')
   public deleteproduct(@Param('id', ParseIntPipe) id: number) {
- 
     return this.ProductsService.deleteproduct(id);
   }
 }
