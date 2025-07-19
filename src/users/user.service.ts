@@ -16,11 +16,14 @@ import {
   ValidationPipe,
   BadRequestException,
     Injectable,
+  forwardRef,
+  Inject,
 } from '@nestjs/common';
 
 import { CreateUserDto } from './dtos/create-user.dto';
 
 import { UpdateUserDto } from './dtos/update-user.dto';
+import { ReviewsService } from 'src/reviews/reviews.service';
 
 type User = {
   id: number;
@@ -34,6 +37,11 @@ export class UserService {
     { id: 2, name: 'Bob', email: 'bobstudent@gmail.com' },
     { id: 3, name: 'Charlie', email: 'charlieinstructor@gmail.com' },
   ];
+
+  constructor(
+    @Inject(forwardRef(() => ReviewsService))
+    private readonly ReviewsService: ReviewsService) {}
+
 
   public getAllUsers() {
     return this.user.map((user) => {

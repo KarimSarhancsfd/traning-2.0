@@ -14,6 +14,7 @@ import {
 import { CreateReviewDto } from './dtos/create-review.dto';
 import { UpdateReviewDto } from './dtos/update-review.dto';
 import { ReviewsService } from './reviews.service';
+import { UserService } from 'src/users/user.service';
 
 
 
@@ -26,7 +27,10 @@ export class ReviewsController {
     // contstructor(ReviewsService: ReviewsService){
     //   this.ReviewsService = ReviewsService;
     // } the same as bellow but below is the best practice
-  constructor(private readonly ReviewsService: ReviewsService) {}//Beast practise
+  constructor(private readonly ReviewsService: ReviewsService
+    , private readonly userService: UserService
+  )
+   {}//Beast practise
 
 
   //GET: http://localhost:5000/api/reviews

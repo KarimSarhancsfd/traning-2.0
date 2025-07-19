@@ -1,3 +1,4 @@
+import { ReviewsService } from './../reviews/reviews.service';
 import {
   Module,
   Get,
@@ -25,13 +26,16 @@ export class UsersController {
   // GET: ~/api/users
 
   //  private userService: UserService = new UserService();
+    // private userService: UserService;
+  // constructor(userService: UserService) {
+  //   this.userService = userService;
+  // }
 
-  // constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService,
+    private readonly ReviewsService: ReviewsService
+  ) {}
 
-  private userService: UserService;
-  constructor(userService: UserService) {
-    this.userService = userService;
-  }
+
 
   @Get()
   public getAllUsers() {
