@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dtos/create-product.dto';
 import { UpdateProductDto } from './dtos/update-product.dto';
 // import { UserService } from 'src/users/user.service';
+import { ReviewsService } from '../reviews/reviews.service';
 
 type Products = {
   id: number;
@@ -23,11 +24,21 @@ type Products = {
 //   private sendEmail: SendEmail = new SendEmail();
 // }
 
+// second:
+/* What is a circular dependency?
+A circular dependency happens when Module A imports Module B, and Module B also imports Module A. NestJS can't resolve this loop on its own because it doesn't know which module to initialize first
+ */
+
 @Injectable() // this is a decorator that makes  the class injectable
 //this called inner dependency injection
 export class ProductsService {
   // constructor(private readonly usersService:UserService) {}
   //this is outer dependency injection
+
+  constructor(
+    private readonly ReviewsService:ReviewsService,
+    // private readonly userService: UserService
+  ){}
 
   private products: Products[] = [
     { id: 1, title: 'book', price: 10 },

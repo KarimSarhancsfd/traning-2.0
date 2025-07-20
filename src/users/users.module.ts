@@ -11,7 +11,8 @@ import { ReviewsModule } from 'src/reviews/reviews.module';
   //  exports:[UserService],
   exports: [UserService], // Export the service so it can be used in other modules
   imports: [forwardRef(() => ReviewsModule)], // If this module depends on other modules, list them here
-  //circular dependency
+  //circular dependency recives and send two directions
+  // users receives from reviews
 })
 export class UsersModule {
   // This module can be expanded with providers, controllers, and other configurations as needed.
