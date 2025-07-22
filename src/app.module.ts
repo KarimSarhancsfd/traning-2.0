@@ -3,6 +3,7 @@ import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
 import { ReviewsModule } from './reviews/reviews.module';
 import {TypeOrmModule} from '@nestjs/typeorm';
+import { Product } from './products/product.entity';
 @Module({
   imports: [ProductsModule,  ReviewsModule, UsersModule, TypeOrmModule.forRoot({
     type: 'postgres',
@@ -12,7 +13,7 @@ import {TypeOrmModule} from '@nestjs/typeorm';
     port: 5432,
     host: 'localhost',
     synchronize: true,//only for development
-    entities:[]
+    entities:[Product]
 
   })],
 
