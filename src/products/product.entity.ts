@@ -10,11 +10,11 @@ export class Product {
     id:number;
 
 
-    @Column()
+    @Column({type: 'varchar', length: '150'})
     title:string;
     @Column()
     description:string;
-     @Column()
+     @Column({type: 'float'})
     price:number;
 
 

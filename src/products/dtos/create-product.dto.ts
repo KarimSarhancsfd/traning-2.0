@@ -9,6 +9,9 @@ export class CreateProductDto {
     @Length(3, 100)
     title:string;
 
+    @IsString({message: 'Description must be a string'})
+    description:string;
+
 
     @IsNumber()
     @IsNotEmpty()
