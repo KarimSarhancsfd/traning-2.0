@@ -12,7 +12,7 @@ import { Product } from './products/product.entity';
     password: '123456789',
     port: 5432,
     host: 'localhost',
-    synchronize: true,//only for development
+    synchronize: false,//only for development
     entities:[Product]
 
   })],
