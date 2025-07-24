@@ -204,6 +204,10 @@ export class ProductsService {
 
    public async deleteproduct(id: number) {
     const product = await this.getsingleProducts(id);
+    if (!product)
+      throw new NotFoundException(`product not found ${id}`, {
+        description: 'the product does not deleted',
+      });
     await this.productsRepository.remove(product);
     return { message: 'product was deleted' };
    }

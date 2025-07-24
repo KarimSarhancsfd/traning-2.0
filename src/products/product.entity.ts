@@ -33,9 +33,5 @@ export class Product {
     onUpdate: CURRENT_TIMESTAMP,
   })
   updatedAt: Date;
-  @DeleteDateColumn({
-    type: 'timestamp with time zone',
-    default: () => CURRENT_TIMESTAMP,
-  })
-  deletedAt: Date;
+
 }
