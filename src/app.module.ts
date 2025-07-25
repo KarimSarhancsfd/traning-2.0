@@ -4,6 +4,8 @@ import { UsersModule } from './users/users.module';
 import { ReviewsModule } from './reviews/reviews.module';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import { Product } from './products/product.entity';
+import {ConfigModule} from '@nestjs/config';
+import { config } from 'rxjs';
 @Module({
   imports: [ProductsModule,  ReviewsModule, UsersModule, TypeOrmModule.forRoot({
     type: 'postgres',
@@ -15,7 +17,13 @@ import { Product } from './products/product.entity';
     synchronize: false,//only for development
     entities:[Product]
 
-  })],
+  }),
+   ConfigModule. forRoot({
+    isGlobal: true,
+    envFilePath: ['.env', '.env.test'],
+  }),
+
+],
 
 
 })

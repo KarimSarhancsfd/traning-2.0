@@ -19,6 +19,7 @@ import {
 import { CreateProductDto } from './dtos/create-product.dto';
 import { UpdateProductDto } from './dtos/update-product.dto';
 import { ProductsService } from './products.service';
+import {ConfigService} from '@nestjs/config';
 
 @Controller('api/products')
 export class ProductsController {
@@ -30,7 +31,9 @@ export class ProductsController {
   //   this.ProductsService = ProductsService;
   // }
 
-  constructor(private readonly ProductsService: ProductsService) {}
+  constructor(private readonly ProductsService: ProductsService,
+              private readonly configService: ConfigService
+  ) {}
 
   /**
    *  Create new product
@@ -57,6 +60,11 @@ export class ProductsController {
    */
   @Get()
   public getAllProducts() {
+    const sampleEnvVariable = this.configService.get<string>('SAMPLE_ENV_VARIABLE');
+    // This will log the value of SAMPLE_ENV_VARIABLE from the .env file
+    // You can also use it in your service or anywhere else in your application
+    const sample1 = process.env.SAMPLE_ENV_VARIABLE;
+    console.log(sampleEnvVariable, sample1);
     return this.ProductsService.getAllProducts();
   }
 
