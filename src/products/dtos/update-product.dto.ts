@@ -12,7 +12,8 @@ export class UpdateProductDto {
     // ? this mark refer that it is optional as we know in the update
 
       @IsString({message: 'Description must be a string'})
-    @IsOptional() // This decorator indicates that the field is optional
+    @IsNotEmpty({message: 'Description is required'})
+    @MinLength(5,{message: 'Description must be at least 10 characters long'})
       description?:string;
 
 

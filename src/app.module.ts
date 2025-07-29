@@ -26,31 +26,29 @@ import { config } from 'rxjs';
 
   // ],
 
-  imports: [
+   imports: [
     ProductsModule,
     ReviewsModule,
     UsersModule,
-    TypeOrmModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => {
-        return {
-          type: 'postgres',
-          database: config.get<string>('DATABASE_NAME') ,
-          username: config.get<string>('DB_USERNAME') ,
-          password: config.get<string>('DB_PASSWORD') ,
-          port: config.get<number>('DB_PORT') || 5432,
-          host: 'localhost',
-          // synchronize: true, //only for development
-          synchronize: process.env.NODE_ENV !== 'production',
-          entities: [Product ],
-        };
-      },
-    }),
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: `.env.${process.env.NODE_ENV}`, // or `.env.production` based on your environment
+      envFilePath: `.env.${process.env.NODE_ENV}`,
+    }),
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        type: 'postgres',
+        host: config.get<string>('DB_HOST'),
+        port: config.get<number>('DB_PORT') || 5432,
+        username: config.get<string>('DB_USERNAME'),
+        password: config.get<string>('DB_PASSWORD'),
+        database: config.get<string>('DB_DATABASE'),
+        synchronize: process.env.NODE_ENV !== 'production',
+        entities: [Product],
+      }),
     }),
   ],
+  
 })
 export class AppModule {}
 

@@ -10,6 +10,8 @@ export class CreateProductDto {
     title:string;
 
     @IsString({message: 'Description must be a string'})
+    @IsNotEmpty({message: 'Description is required'})
+    @MinLength(5,{message: 'Description must be at least 10 characters long'})
     description:string;
 
 
