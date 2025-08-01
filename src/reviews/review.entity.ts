@@ -10,6 +10,7 @@ import {
 import { CURRENT_TIMESTAMP } from '../utils/constants';
 
 import { Product } from '../products/product.entity';
+import { User } from '../users/user.entity';
 
 @Entity({ name: 'reviews' })
 export class Review {
@@ -35,9 +36,14 @@ export class Review {
   })
   updatedAt: Date;
    @ManyToOne(() => Product, (product) => product.reviews)
+   //amany to-one relationship with Product
+  // the first argument is a function that returns the Product entity or the target function
+  // the second argument is a function that returns the reviews associated with the product
    product: Product;
     // Establishing a many-to-one relationship with Product
     // A reviews belongs to a single product
 
+  @ManyToOne(() => User, (user) => user.review)
+    user: User;
   
 }
