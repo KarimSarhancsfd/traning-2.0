@@ -4,6 +4,8 @@ import { Module, forwardRef } from '@nestjs/common';
  import { ReviewsService } from './reviews.service';
 import { UsersModule } from 'src/users/users.module';
 import { ProductsModule } from 'src/products/products.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Review } from './review.entity'; // Import the Review entity
 
 @Module({
   controllers:[ReviewsController ],
@@ -17,7 +19,7 @@ import { ProductsModule } from 'src/products/products.module';
    //circular dependency recives and send two directions
   // users receives from reviews
 
-  imports: [forwardRef(() => UsersModule),  forwardRef (() =>ProductsModule )],
+  imports: [forwardRef(() => UsersModule),  forwardRef (() =>ProductsModule ), TypeOrmModule.forFeature([Review])],
 }) //decorator
 export class ReviewsModule {
   // This module can be expanded with providers, controllers, and other configurations as needed.

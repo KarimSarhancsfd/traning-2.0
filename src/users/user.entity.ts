@@ -11,13 +11,10 @@ import {
 import { CURRENT_TIMESTAMP } from '../utils/constants';
 import { Product } from '../products/product.entity';
 import { Review } from '../reviews/review.entity';
+import { UserType} from '../utils/enum'; // Import the UserType enum
 
 
-enum UserType {
-    ADMIN = 'admin',
-    NORMAL_USER = 'normal_user',
 
-}
 
 
 @Entity({ name: 'users' })

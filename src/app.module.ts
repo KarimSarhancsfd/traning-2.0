@@ -6,6 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './products/product.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { config } from 'rxjs';
+import { Review } from './reviews/review.entity';
+import { User } from './users/user.entity';
 @Module({
   // impotant Note: this is a typo, we canot inject in forroot
   //   imports: [ProductsModule,  ReviewsModule, UsersModule, TypeOrmModule.forRoot({
@@ -44,7 +46,7 @@ import { config } from 'rxjs';
         password: config.get<string>('DB_PASSWORD'),
         database: config.get<string>('DB_DATABASE'),
         synchronize: process.env.NODE_ENV !== 'production',
-        entities: [Product],
+        entities: [Product, Review, User], // Add your entities here
       }),
     }),
   ],
