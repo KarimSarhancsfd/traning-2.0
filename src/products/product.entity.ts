@@ -61,3 +61,6 @@ user: User;
 
 
 }
+
+// important note: you can use this ALTER SEQUENCE products_id_seq RESTART WITH 1;
+// statement to reset the auto-incrementing ID sequence for the products table in PostgreSQL.
